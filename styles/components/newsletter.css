@@ -1,0 +1,63 @@
+/* styles/components/newsletter.css */
+.newsletter {
+    background: linear-gradient(135deg, #1d1d1f 0%, #000000 100%);
+    border-radius: var(--border-radius);
+    padding: 80px 60px;
+    color: white;
+    text-align: center;
+    margin: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.newsletter:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top right, rgba(0, 113, 227, 0.2) 0%, transparent 60%);
+}
+
+.newsletter h3 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.newsletter p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    color: rgba(255, 255, 255, 0.7);
+    position: relative;
+}
+
+.newsletter-form {
+    display: flex;
+    max-width: 500px;
+    margin: 0 auto;
+    gap: 15px;
+    position: relative;
+}
+
+.newsletter-input {
+    flex: 1;
+    padding: 15px 20px;
+    border-radius: 50px;
+    border: none;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    outline: none;
+    transition: var(--transition);
+}
+
+.newsletter-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.newsletter-input:focus {
+    background: rgba(255, 255, 255, 0.15);
+}
