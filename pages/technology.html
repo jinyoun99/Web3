@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovative Technology | TechAuto</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        :root {
+            --primary: #1d1d1f;
+            --secondary: #f5f5f7;
+            --accent: #0071e3;
+            --accent-hover: #0077ed;
+            --text-light: #86868b;
+            --text-dark: #1d1d1f;
+            --card-bg: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --section-padding: 120px 40px;
+            --border-radius: 20px;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --box-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            background-color: #fff;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.5;
+            background: linear-gradient(135deg, #f9f9fb 0%, #ffffff 100%);
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            position: relative;
+            transform: rotate(45deg);
+        }
+
+        .logo-icon:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 16px;
+            background: white;
+            border-radius: 4px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 14px;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        nav a:hover:after {
+            width: 100%;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .primary-btn {
+            background: var(--accent);
+            color: white;
+            border: 1px solid var(--accent);
+        }
+
+        .primary-btn:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .secondary-btn {
+            background: transparent;
+            color: var(--text-dark);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .secondary-btn:hover {
+            background: rgba(0, 0, 0, 0.02);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .tech-hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .tech-hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tech-hero h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            color: var(--primary);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease forwards 0.3s;
+        }
+
+        .tech-hero p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 40px;
+            color: var(--text-light);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease forwards 0.6s;
+        }
+
+        .hero-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .circuit-line {
+            position: absolute;
+            stroke: rgba(0, 113, 227, 0.05);
+            stroke-width: 1;
+            fill: none;
+            z-index: 1;
+        }
+
+        .tech-chip {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--box-shadow);
+            animation: float 8s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        .tech-chip i {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        /* Sections */
+        .section {
+            padding: var(--section-padding);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-header p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Technology Features */
+        .tech-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .tech-feature {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-feature:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(0, 113, 227, 0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .feature-icon i {
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+
+        .tech-feature h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .tech-feature p {
+            color: var(--text-light);
+            margin-bottom: 25px;
+        }
+
+        .feature-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .feature-link:hover {
+            gap: 12px;
+        }
+
+        /* Tech Showcase */
+        .tech-showcase {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+            margin-bottom: 120px;
+            position: relative;
+        }
+
+        .showcase-content {
+            flex: 1;
+        }
+
+        .showcase-image {
+            flex: 1;
+            height: 500px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow-hover);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .showcase-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .showcase-image:hover img {
+            transform: scale(1.03);
+        }
+
+        .showcase-badge {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background: var(--accent);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            z-index: 2;
+        }
+
+        .showcase-content h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .showcase-content p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .feature-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .feature-list li i {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-top: 4px;
+        }
+
+        /* Stats Section */
+        .tech-stats {
+            background: linear-gradient(135deg, #1d1d1f 0%, #000000 100%);
+            border-radius: var(--border-radius);
+            padding: 80px 40px;
+            text-align: center;
+            margin: 80px 0;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-stats:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(0, 113, 227, 0.2) 0%, transparent 60%);
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-item {
+            min-width: 200px;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+        }
+
+        /* Innovation Timeline */
+        .timeline-section {
+            margin: 120px 0;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--accent);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .timeline-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 30px;
+            background-color: white;
+            position: relative;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .timeline-content h4 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .timeline-content p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .timeline-date {
+            position: absolute;
+            top: 20px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-date {
+            right: -100px;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-date {
+            left: -100px;
+            text-align: left;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid var(--accent);
+            top: 30px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -12px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -12px;
+        }
+
+        /* Partners Section */
+        .partners-section {
+            text-align: center;
+            margin: 120px 0;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 60px auto;
+        }
+
+        .partner-card {
+            height: 120px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            padding: 20px;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        .partner-logo {
+            max-width: 150px;
+            max-height: 80px;
+            filter: grayscale(100%);
+            transition: var(--transition);
+        }
+
+        .partner-card:hover .partner-logo {
+            filter: grayscale(0%);
+        }
+
+        /* Future Tech */
+        .future-tech {
+            background: linear-gradient(135deg, #0071e3 0%, #004a99 100%);
+            border-radius: var(--border-radius);
+            padding: 100px 60px;
+            text-align: center;
+            color: white;
+            margin: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .future-tech:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+        }
+
+        .future-tech h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .future-tech p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            position: relative;
+            z-index: 2;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 80px 40px 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto 60px;
+        }
+
+        .footer-column h4 {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .footer-column h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .floating {
+            animation: float 8s ease-in-out infinite;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-date,
+            .timeline-item:nth-child(even) .timeline-date {
+                left: 0;
+                top: -30px;
+                text-align: left;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .timeline-item:nth-child(even)::after {
+                left: 21px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .tech-hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .tech-showcase {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .showcase-image {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .nav-buttons {
+                display: none;
+            }
+            
+            .tech-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tech-hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+            
+            .section {
+                padding: 80px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="logo">
+            <div class="logo-icon"></div>
+            <span>Tech</span>Auto
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="vehicles.html">Vehicles</a></li>
+                <li><a href="technology.html" class="active">Technology</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <div class="nav-buttons">
+            <button class="nav-btn secondary-btn">Sign In</button>
+            <button class="nav-btn primary-btn">Explore</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="tech-hero">
+        <div class="hero-animation">
+            <svg class="circuit-line" width="100%" height="100%" viewBox="0 0 1000 1000">
+                <path d="M200,200 Q400,100 600,200 T1000,200" fill="none" />
+                <path d="M200,400 Q400,300 600,400 T1000,400" fill="none" />
+                <path d="M200,600 Q400,500 600,600 T1000,600" fill="none" />
+                <path d="M200,800 Q400,700 600,800 T1000,800" fill="none" />
+            </svg>
+            
+            <div class="tech-chip" style="top: 20%; left: 15%; animation-delay: 0s;">
+                <i class="fas fa-microchip"></i>
+            </div>
+            <div class="tech-chip" style="top: 40%; left: 80%; animation-delay: 1s;">
+                <i class="fas fa-car"></i>
+            </div>
+            <div class="tech-chip" style="top: 70%; left: 25%; animation-delay: 2s;">
+                <i class="fas fa-brain"></i>
+            </div>
+            <div class="tech-chip" style="top: 60%; left: 65%; animation-delay: 3s;">
+                <i class="fas fa-bolt"></i>
+            </div>
+        </div>
+        
+        <div class="tech-hero-content">
+            <h1>Revolutionizing Automotive Technology</h1>
+            <p>Where cutting-edge innovation meets unparalleled driving experiences</p>
+            <button class="nav-btn primary-btn" style="padding: 14px 30px; font-size: 1.1rem; animation: fadeUp 1s ease forwards 0.9s;">Explore Innovations</button>
+        </div>
+    </section>
+
+    <!-- Technology Features -->
+    <section class="section">
+        <div class="section-header">
+            <h2>Core Technologies</h2>
+            <p>Discover the advanced systems powering the next generation of vehicles</p>
+        </div>
+        
+        <div class="tech-features">
+            <div class="tech-feature">
+                <div class="feature-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>Intelligent Autonomy</h3>
+                <p>Our autonomous driving systems combine AI, sensors, and machine learning to create the safest and most intuitive driving experience.</p>
+                <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="tech-feature">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Electric Powertrains</h3>
+                <p>Advanced battery technology and efficient motors deliver exceptional range and performance without compromise.</p>
+                <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="tech-feature">
+                <div class="feature-icon">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <h3>Connected Ecosystem</h3>
+                <p>Seamless integration with your digital life through advanced connectivity and cloud-based services.</p>
+                <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="tech-feature">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Advanced Safety</h3>
+                <p>Predictive safety systems that anticipate potential hazards and protect occupants in all scenarios.</p>
+                <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Showcase: Autonomous Driving -->
+    <section class="section">
+        <div class="tech-showcase">
+            <div class="showcase-image">
+                <div class="showcase-badge">Innovation</div>
+                <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Autonomous Driving">
+            </div>
+            <div class="showcase-content">
+                <h3>Autonomous Driving Systems</h3>
+                <p>Our next-generation autonomous technology combines AI, sensor fusion, and real-time mapping to create the safest and most intuitive driving experience.</p>
+                
+                <ul class="feature-list">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Level 4 Autonomy</strong>
+                            <p>Hands-free driving in most conditions with comprehensive safety protocols</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>360° Sensor Array</strong>
+                            <p>LiDAR, radar, and cameras provide complete environmental awareness</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Machine Learning</strong>
+                            <p>Constantly improving algorithms based on millions of real-world miles</p>
+                        </div>
+                    </li>
+                </ul>
+                
+                <button class="nav-btn primary-btn">Experience Autonomy</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section">
+        <div class="tech-stats">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">1.2M+</div>
+                    <div class="stat-label">Autonomous Miles Driven</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Accident Reduction</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">0.24s</div>
+                    <div class="stat-label">System Response Time</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">350+</div>
+                    <div class="stat-label">Technology Patents</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Showcase: Electric Powertrain -->
+    <section class="section">
+        <div class="tech-showcase">
+            <div class="showcase-content">
+                <h3>Revolutionary Electric Powertrain</h3>
+                <p>Our proprietary battery and motor technology delivers unprecedented range, performance, and charging efficiency.</p>
+                
+                <ul class="feature-list">
+                    <li>
+                        <i class="fas fa-bolt"></i>
+                        <div>
+                            <strong>800V Architecture</strong>
+                            <p>Ultra-fast charging with 200 miles in 10 minutes</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-car-battery"></i>
+                        <div>
+                            <strong>Solid-State Batteries</strong>
+                            <p>Higher energy density with improved safety and longevity</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-sync-alt"></i>
+                        <div>
+                            <strong>Regenerative 4.0</strong>
+                            <p>Recapture up to 95% of braking energy for extended range</p>
+                        </div>
+                    </li>
+                </ul>
+                
+                <button class="nav-btn primary-btn">Explore Powertrain</button>
+            </div>
+            <div class="showcase-image">
+                <div class="showcase-badge">Efficiency</div>
+                <img src="https://images.unsplash.com/photo-1630450202870-af5d4a0a3b8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Electric Powertrain">
+            </div>
+        </div>
+    </section>
+
+    <!-- Innovation Timeline -->
+    <section class="section timeline-section">
+        <div class="section-header">
+            <h2>Innovation Timeline</h2>
+            <p>Our journey of technological breakthroughs and milestones</p>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">2020</div>
+                <div class="timeline-content">
+                    <h4>Autonomous Prototype</h4>
+                    <p>First successful test of our autonomous driving system covering 1000 miles without intervention.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2021</div>
+                <div class="timeline-content">
+                    <h4>Solid-State Battery Breakthrough</h4>
+                    <p>Developed industry-leading energy density of 450 Wh/kg in our battery technology.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2022</div>
+                <div class="timeline-content">
+                    <h4>AI-Powered Predictive Safety</h4>
+                    <p>Launched neural network-based safety system reducing accidents by 45% in testing.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2023</div>
+                <div class="timeline-content">
+                    <h4>Vehicle-to-Everything (V2X)</h4>
+                    <p>Implemented comprehensive connectivity allowing vehicles to communicate with infrastructure.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2024</div>
+                <div class="timeline-content">
+                    <h4>Level 4 Autonomy Certification</h4>
+                    <p>Received regulatory approval for hands-free autonomous driving in designated areas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="section partners-section">
+        <div class="section-header">
+            <h2>Technology Partners</h2>
+            <p>Collaborating with industry leaders to drive innovation forward</p>
+        </div>
+        
+        <div class="partners-grid">
+            <div class="partner-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" class="partner-logo">
+            </div>
+            <div class="partner-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple" class="partner-logo">
+            </div>
+            <div class="partner-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" class="partner-logo">
+            </div>
+            <div class="partner-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM" class="partner-logo">
+            </div>
+            <div class="partner-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Intel_logo_2020.svg" alt="Intel" class="partner-logo">
+            </div>
+            <div class="partner-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/NVIDIA_logo.svg" alt="NVIDIA" class="partner-logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Tech -->
+    <section class="section">
+        <div class="future-tech">
+            <h2>The Future of Mobility</h2>
+            <p>We're pioneering technologies that will transform transportation, including quantum computing applications, neural interface controls, and sustainable energy solutions. Join us on the journey to redefine what's possible.</p>
+            <button class="nav-btn secondary-btn" style="background: white; color: var(--accent); padding: 14px 40px; font-size: 1.1rem;">Explore Future Tech</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Products</h4>
+                <ul>
+                    <li><a href="vehicles.html">All Vehicles</a></li>
+                    <li><a href="vehicles.html#electric">Electric Models</a></li>
+                    <li><a href="vehicles.html#hybrid">Hybrid Technology</a></li>
+                    <li><a href="vehicles.html#performance">Performance Series</a></li>
+                    <li><a href="vehicles.html">Compare Models</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Technology</h4>
+                <ul>
+                    <li><a href="technology.html#autonomous">Autonomous Driving</a></li>
+                    <li><a href="technology.html#powertrain">Electric Powertrain</a></li>
+                    <li><a href="technology.html#connectivity">Connectivity</a></li>
+                    <li><a href="technology.html#safety">Safety Systems</a></li>
+                    <li><a href="technology.html#research">Research & Development</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Experience</h4>
+                <ul>
+                    <li><a href="experience.html">Test Drive</a></li>
+                    <li><a href="experience.html">Virtual Showroom</a></li>
+                    <li><a href="experience.html">Events</a></li>
+                    <li><a href="experience.html">Owners Community</a></li>
+                    <li><a href="experience.html">App</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="about.html">Careers</a></li>
+                    <li><a href="about.html">Sustainability</a></li>
+                    <li><a href="about.html">Investors</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright">© 2023 TechAuto. All rights reserved.</div>
+            <div class="social-links">
+                <a href="https://facebook.com/techauto"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/techauto"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/techauto"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/techauto"><i class="fab fa-youtube"></i></a>
+                <a href="https://linkedin.com/company/techauto"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animation for timeline items
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, { threshold: 0.2 });
+        
+        timelineItems.forEach(item => {
+            timelineObserver.observe(item);
+        });
+
+        // Floating animation for tech chips
+        const techChips = document.querySelectorAll('.tech-chip');
+        techChips.forEach((chip, index) => {
+            chip.style.animationDelay = `${index * 2}s`;
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.05)';
+            }
+        });
+    </script>
+</body>
+</html>
