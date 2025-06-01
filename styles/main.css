@@ -1,0 +1,23 @@
+/* styles/main.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+/* Import variables and base styles */
+@import 'variables.css';
+@import 'base.css';
+
+/* Import component styles */
+@import 'components/preloader.css';
+@import 'components/header.css';
+@import 'components/hero.css';
+@import 'components/cards.css';
+@import 'components/features.css';
+@import 'components/stats.css';
+@import 'components/gallery.css';
+@import 'components/newsletter.css';
+@import 'components/footer.css';
+@import 'components/modal.css';
+
+/* Import utility styles */
+@import 'utilities/animations.css';
+@import 'utilities/responsive.css';
