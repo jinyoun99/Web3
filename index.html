@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechAuto | Where Technology Meets Automotive Excellence</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-logo">
+            <svg viewBox="0 0 100 100">
+                <rect x="25" y="25" width="50" height="50" fill="#0071e3" rx="10" ry="10"/>
+                <rect x="35" y="35" width="30" height="30" fill="#ffffff" rx="5" ry="5"/>
+            </svg>
+        </div>
+        <div class="preloader-bar">
+            <div class="preloader-progress" id="preloader-progress"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <a href="#" class="logo">
+            <div class="logo-icon"></div>
+            <span>Tech</span>Auto
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="pages/vehicles.html">Vehicles</a></li>
+                <li><a href="pages/technology.html">Technology</a></li>
+                <li><a href="pages/experience.html">Experience</a></li>
+                <li><a href="pages/about.html">About</a></li>
+            </ul>
+        </nav>
+        <div class="nav-buttons">
+            <button class="nav-btn secondary-btn">Sign In</button>
+            <button class="nav-btn primary-btn">Explore</button>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <video class="hero-video" autoplay muted loop>
+            <source src="assets/videos/hero-video.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>The Future of Mobility is Here</h1>
+            <p>Where cutting-edge technology meets automotive excellence to create a new driving experience</p>
+            <div class="hero-btn">
+                <button class="nav-btn primary-btn" style="padding: 14px 30px; font-size: 1.1rem;">Discover Innovation</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Vehicles -->
+    <section class="section" id="featured-vehicles">
+        <div class="section-header">
+            <h2>Revolutionary Vehicles</h2>
+            <p>Experience the perfect fusion of technology, design, and performance</p>
+        </div>
+        
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-image">
+                    <div class="card-badge">New</div>
+                    <img src="assets/images/vehicles/mazda-cx5.jpg" alt="Mazda CX-5">
+                </div>
+                <div class="card-content">
+                    <h3>Mazda CX-5</h3>
+                    <p>Combining elegant design with intuitive technology for an exceptional driving experience.</p>
+                    <div class="card-specs">
+                        <div class="spec-item">
+                            <div class="spec-value">187 HP</div>
+                            <div class="spec-label">Power</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-value">35 MPG</div>
+                            <div class="spec-label">Efficiency</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-value">AWD</div>
+                            <div class="spec-label">Drive</div>
+                        </div>
+                    </div>
+                    <a href="pages/vehicles.html#cx5" class="card-link">Explore Model <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-image">
+                    <div class="card-badge">Premium</div>
+                    <img src="assets/images/vehicles/mercedes-eclass.jpg" alt="Mercedes-Benz E-Class">
+                </div>
+                <div class="card-content">
+                    <h3>Mercedes-Benz E-Class</h3>
+                    <p>The pinnacle of luxury and innovation with intelligent driving assistance systems.</p>
+                    <div class="card-specs">
+                        <div class="spec-item">
+                            <div class="spec-value">362 HP</div>
+                            <div class="spec-label">Power</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-value">29 MPG</div>
+                            <div class="spec-label">Efficiency</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-value">4MATIC</div>
+                            <div class="spec-label">Drive</div>
+                        </div>
+                    </div>
+                    <a href="pages/vehicles.html#eclass" class="card-link">Explore Model <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-image">
+                    <div class="card-badge">Electric</div>
+                    <img src="assets/images/vehicles/techauto-e1.jpg" alt="TechAuto E1">
+                </div>
+                <div class="card-content">
+                    <h3>TechAuto E1</h3>
+                    <p>Next-generation electric vehicle with extended range and rapid charging capability.</p>
+                    <div class="card-specs">
+                        <div class="spec-item">
+                            <div class="spec-value">402 HP</div>
+                            <div class="spec-label">Power</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-value">350 mi</div>
+                            <div class="spec-label">Range</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-value">AWD</div>
+                            <div class="spec-label">Drive</div>
+                        </div>
+                    </div>
+                    <a href="pages/vehicles.html#e1" class="card-link">Explore Model <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Feature -->
+    <section class="section" id="technology">
+        <div class="section-header">
+            <h2>Advanced Technology</h2>
+            <p>Innovative systems designed to enhance safety, performance, and connectivity</p>
+        </div>
+        
+        <div class="feature">
+            <div class="feature-content">
+                <h3>Intelligent Drive System</h3>
+                <p>Our proprietary technology continuously adapts to driving conditions, optimizing performance and efficiency. The system learns your driving patterns to provide a personalized experience.</p>
+                <p>With real-time data processing and predictive analytics, your vehicle anticipates road conditions and adjusts settings for maximum comfort and safety.</p>
+                
+                <ul class="feature-list">
+                    <li>Adaptive cruise control with stop & go capability</li>
+                    <li>Lane centering and lane change assistance</li>
+                    <li>Predictive suspension adjustment</li>
+                    <li>Traffic sign recognition</li>
+                </ul>
+                
+                <a href="pages/technology.html#drive-system" class="nav-btn primary-btn">Discover Technology</a>
+            </div>
+            <div class="feature-image">
+                <img src="assets/images/technology/drive-system.jpg" alt="Car Technology">
+            </div>
+        </div>
+        
+        <div class="feature">
+            <div class="feature-content">
+                <h3>Seamless Connectivity</h3>
+                <p>Integrated with Apple CarPlay and advanced infotainment systems, our vehicles keep you connected without distraction. Voice-controlled interfaces allow for hands-free operation.</p>
+                <p>Over-the-air updates ensure your vehicle's software is always current, adding new features and improving performance throughout the life of your car.</p>
+                
+                <ul class="feature-list">
+                    <li>12.3" HD touchscreen with gesture control</li>
+                    <li>Natural voice command recognition</li>
+                    <li>Augmented reality navigation</li>
+                    <li>Remote vehicle management via app</li>
+                </ul>
+                
+                <a href="pages/technology.html#connectivity" class="nav-btn primary-btn">Experience Connectivity</a>
+            </div>
+            <div class="feature-image">
+                <img src="assets/images/technology/connectivity.jpg" alt="Car Interior">
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section" id="stats">
+        <div class="stats">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Customer Satisfaction</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">350+</div>
+                    <div class="stat-label">Technology Patents</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1.2M</div>
+                    <div class="stat-label">Connected Vehicles</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">0.24s</div>
+                    <div class="stat-label">Response Time</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section" id="gallery">
+        <div class="section-header">
+            <h2>Experience Gallery</h2>
+            <p>Discover the beauty and innovation of our vehicles through stunning visuals</p>
+        </div>
+        
+        <div class="gallery">
+            <div class="gallery-item" onclick="openModal('gallery1')">
+                <img src="assets/images/gallery/design.jpg" alt="Car Design">
+                <div class="gallery-overlay">
+                    <h3>Elegant Design</h3>
+                    <p>Timeless aesthetics meet modern innovation</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item" onclick="openModal('gallery2')">
+                <img src="assets/images/gallery/interior.jpg" alt="Car Interior">
+                <div class="gallery-overlay">
+                    <h3>Luxury Interior</h3>
+                    <p>Crafted with premium materials and attention to detail</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item" onclick="openModal('gallery3')">
+                <img src="assets/images/gallery/cockpit.jpg" alt="Car Technology">
+                <div class="gallery-overlay">
+                    <h3>Digital Cockpit</h3>
+                    <p>Advanced driver information system</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="section" id="newsletter">
+        <div class="newsletter">
+            <h3>Stay Informed</h3>
+            <p>Subscribe to our newsletter for the latest updates on technology innovations and new vehicle releases</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                <button type="submit" class="nav-btn primary-btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Products</h4>
+                <ul>
+                    <li><a href="pages/vehicles.html">All Vehicles</a></li>
+                    <li><a href="pages/vehicles.html#electric">Electric Models</a></li>
+                    <li><a href="pages/technology.html#hybrid">Hybrid Technology</a></li>
+                    <li><a href="pages/vehicles.html#performance">Performance Series</a></li>
+                    <li><a href="pages/vehicles.html">Compare Models</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Technology</h4>
+                <ul>
+                    <li><a href="pages/technology.html#drive-system">Intelligent Drive</a></li>
+                    <li><a href="pages/technology.html#safety">Safety Systems</a></li>
+                    <li><a href="pages/technology.html#connectivity">Connectivity</a></li>
+                    <li><a href="pages/technology.html#battery">Battery Technology</a></li>
+                    <li><a href="pages/technology.html">Research & Development</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Experience</h4>
+                <ul>
+                    <li><a href="pages/experience.html#test-drive">Test Drive</a></li>
+                    <li><a href="pages/experience.html#showroom">Virtual Showroom</a></li>
+                    <li><a href="pages/experience.html#events">Events</a></li>
+                    <li><a href="pages/experience.html#community">Owners Community</a></li>
+                    <li><a href="pages/experience.html#app">App</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="pages/about.html">About Us</a></li>
+                    <li><a href="pages/about.html#careers">Careers</a></li>
+                    <li><a href="pages/about.html#sustainability">Sustainability</a></li>
+                    <li><a href="pages/about.html#investors">Investors</a></li>
+                    <li><a href="pages/contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright">© 2023 TechAuto. All rights reserved.</div>
+            <div class="social-links">
+                <a href="https://facebook.com/techauto"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/techauto"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/techauto"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/techauto"><i class="fab fa-youtube"></i></a>
+                <a href="https://linkedin.com/company/techauto"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="gallery-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Gallery</div>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img src="" alt="Gallery Image" id="modal-image" style="width: 100%; border-radius: 10px;">
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
