@@ -1,0 +1,15 @@
+/* styles/variables.css */
+:root {
+    --primary: #1d1d1f;
+    --secondary: #f5f5f7;
+    --accent: #0071e3;
+    --accent-hover: #0077ed;
+    --text-light: #86868b;
+    --text-dark: #1d1d1f;
+    --card-bg: #ffffff;
+    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    --section-padding: 120px 40px;
+    --border-radius: 20px;
+    --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    --box-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
