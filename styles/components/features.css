@@ -1,0 +1,77 @@
+/* styles/components/features.css */
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    margin-bottom: 120px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+
+.feature.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.feature:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.feature-content {
+    flex: 1;
+}
+
+.feature-image {
+    flex: 1;
+    height: 500px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow-hover);
+    position: relative;
+}
+
+.feature-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.feature:hover .feature-image img {
+    transform: scale(1.03);
+}
+
+.feature h3 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.feature p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.feature-list {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.feature-list li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.feature-list li:before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-top: 8px;
+    flex-shrink: 0;
+}
