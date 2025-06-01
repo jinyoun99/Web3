@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience | TechAuto</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        :root {
+            --primary: #1d1d1f;
+            --secondary: #f5f5f7;
+            --accent: #0071e3;
+            --accent-hover: #0077ed;
+            --text-light: #86868b;
+            --text-dark: #1d1d1f;
+            --card-bg: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --section-padding: 120px 40px;
+            --border-radius: 20px;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --box-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            background-color: #fff;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.5;
+            background: linear-gradient(135deg, #f9f9fb 0%, #ffffff 100%);
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            position: relative;
+            transform: rotate(45deg);
+        }
+
+        .logo-icon:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 16px;
+            background: white;
+            border-radius: 4px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 14px;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        nav a:hover:after {
+            width: 100%;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .primary-btn {
+            background: var(--accent);
+            color: white;
+            border: 1px solid var(--accent);
+        }
+
+        .primary-btn:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .secondary-btn {
+            background: transparent;
+            color: var(--text-dark);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .secondary-btn:hover {
+            background: rgba(0, 0, 0, 0.02);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .experience-hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .experience-hero h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            color: white;
+        }
+
+        .experience-hero p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Experience Journey */
+        .journey-section {
+            padding: var(--section-padding);
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-header p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .journey-steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .journey-step {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .step-number {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .step-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 30px;
+        }
+
+        .journey-step h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .journey-step p {
+            color: var(--text-light);
+            margin-bottom: 25px;
+        }
+
+        /* Virtual Showroom */
+        .showroom-section {
+            padding: 100px 40px;
+            background: linear-gradient(135deg, #1d1d1f 0%, #000000 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .showroom-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(0, 113, 227, 0.2) 0%, transparent 60%);
+        }
+
+        .showroom-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 80px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .showroom-text {
+            flex: 1;
+        }
+
+        .showroom-demo {
+            flex: 1;
+            height: 500px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow-hover);
+            position: relative;
+        }
+
+        .showroom-demo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .showroom-demo:hover img {
+            transform: scale(1.05);
+        }
+
+        .showroom-text h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+        }
+
+        .showroom-text p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 15px;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 113, 227, 0.2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .feature-icon i {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .feature-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .feature-text p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Test Drive Section */
+        .test-drive-section {
+            padding: var(--section-padding);
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .drive-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .drive-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .drive-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        .drive-image {
+            height: 250px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .drive-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .drive-card:hover .drive-image img {
+            transform: scale(1.05);
+        }
+
+        .drive-content {
+            padding: 30px;
+        }
+
+        .drive-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .drive-content p {
+            color: var(--text-light);
+            margin-bottom: 25px;
+        }
+
+        /* Events Section */
+        .events-section {
+            padding: 100px 40px;
+            background: var(--secondary);
+        }
+
+        .events-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .event-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        .event-image {
+            height: 200px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .event-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .event-card:hover .event-image img {
+            transform: scale(1.05);
+        }
+
+        .event-date {
+            background: var(--accent);
+            color: white;
+            padding: 10px 20px;
+            display: inline-block;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            border-radius: 30px;
+            font-weight: 500;
+        }
+
+        .event-content {
+            padding: 30px;
+        }
+
+        .event-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .event-content p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        /* App Section */
+        .app-section {
+            padding: var(--section-padding);
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 80px;
+        }
+
+        .app-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .phone-mockup {
+            width: 300px;
+            height: 600px;
+            background: #1d1d1f;
+            border-radius: 40px;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .phone-screen {
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            width: calc(100% - 20px);
+            height: calc(100% - 40px);
+            border-radius: 30px;
+            overflow: hidden;
+        }
+
+        .phone-screen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .app-content {
+            flex: 1;
+        }
+
+        .app-content h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+        }
+
+        .app-content p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .app-features {
+            margin-bottom: 40px;
+        }
+
+        .app-feature {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .app-feature i {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-top: 5px;
+        }
+
+        .app-badges {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .app-badge {
+            height: 60px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .app-badge:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            padding: 100px 40px;
+            background: linear-gradient(135deg, #0071e3 0%, #004a99 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .testimonials-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            text-align: left;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .testimonial-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-info h4 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .testimonial-info p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .testimonial-rating {
+            color: #ffd700;
+            font-size: 1.2rem;
+        }
+
+        /* Newsletter */
+        .newsletter-section {
+            padding: 100px 40px;
+            text-align: center;
+        }
+
+        .newsletter-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 60px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .newsletter-container h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .newsletter-container p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            gap: 15px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 15px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 80px 40px 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto 60px;
+        }
+
+        .footer-column h4 {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .footer-column h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .showroom-content {
+                flex-direction: column;
+            }
+            
+            .app-section {
+                flex-direction: column;
+            }
+            
+            .app-image {
+                order: 2;
+            }
+            
+            .app-content {
+                order: 1;
+                text-align: center;
+            }
+            
+            .app-badges {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .experience-hero h1 {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .nav-buttons {
+                display: none;
+            }
+            
+            .experience-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .experience-hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+            
+            .section {
+                padding: 80px 20px;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="logo">
+            <div class="logo-icon"></div>
+            <span>Tech</span>Auto
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="vehicles.html">Vehicles</a></li>
+                <li><a href="technology.html">Technology</a></li>
+                <li><a href="experience.html" class="active">Experience</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <div class="nav-buttons">
+            <button class="nav-btn secondary-btn">Sign In</button>
+            <button class="nav-btn primary-btn">Explore</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="experience-hero">
+        <video class="hero-video" autoplay muted loop>
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-driving-on-a-winding-road-through-a-forest-20630-large.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Elevate Your Driving Journey</h1>
+            <p>Discover a world of premium experiences designed around you</p>
+            <button class="nav-btn primary-btn" style="padding: 14px 30px; font-size: 1.1rem;">Begin Your Experience</button>
+        </div>
+    </section>
+
+    <!-- Experience Journey -->
+    <section class="journey-section">
+        <div class="section-header">
+            <h2>The TechAuto Experience</h2>
+            <p>From discovery to ownership and beyond, we've crafted every touchpoint for excellence</p>
+        </div>
+        
+        <div class="journey-steps">
+            <div class="journey-step">
+                <div class="step-number">1</div>
+                <div class="step-icon"><i class="fas fa-search"></i></div>
+                <h3>Discover</h3>
+                <p>Explore our vehicles through immersive digital experiences or visit our showrooms.</p>
+                <button class="nav-btn secondary-btn">Explore Models</button>
+            </div>
+            
+            <div class="journey-step">
+                <div class="step-number">2</div>
+                <div class="step-icon"><i class="fas fa-car"></i></div>
+                <h3>Test Drive</h3>
+                <p>Experience our vehicles firsthand with personalized test drives tailored to your preferences.</p>
+                <button class="nav-btn secondary-btn">Book a Drive</button>
+            </div>
+            
+            <div class="journey-step">
+                <div class="step-number">3</div>
+                <div class="step-icon"><i class="fas fa-cogs"></i></div>
+                <h3>Customize</h3>
+                <p>Create your perfect vehicle with our extensive customization options and packages.</p>
+                <button class="nav-btn secondary-btn">Design Yours</button>
+            </div>
+            
+            <div class="journey-step">
+                <div class="step-number">4</div>
+                <div class="step-icon"><i class="fas fa-users"></i></div>
+                <h3>Ownership</h3>
+                <p>Join our exclusive owner's community with premium services and experiences.</p>
+                <button class="nav-btn secondary-btn">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Virtual Showroom -->
+    <section class="showroom-section">
+        <div class="showroom-content">
+            <div class="showroom-text">
+                <h2>Virtual Showroom</h2>
+                <p>Step into our immersive digital showroom from anywhere in the world. Explore every detail of our vehicles in stunning 360° views, customize colors and features in real-time, and experience the future of automotive retail.</p>
+                
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-vr-cardboard"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Immersive Exploration</h4>
+                            <p>Walk around vehicles in lifelike 3D environments</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Real-time Customization</h4>
+                            <p>Change colors, wheels, and trims with a click</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-vector-square"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Augmented Reality</h4>
+                            <p>See how our vehicles look in your driveway</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Live Expert Assistance</h4>
+                            <p>Connect with product specialists in real-time</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="nav-btn primary-btn" style="margin-top: 40px;">Enter Virtual Showroom</button>
+            </div>
+            
+            <div class="showroom-demo">
+                <img src="https://images.unsplash.com/photo-1592840331052-16e15c2c6f95?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Virtual Showroom">
+            </div>
+        </div>
+    </section>
+
+    <!-- Test Drive Section -->
+    <section class="test-drive-section">
+        <div class="section-header">
+            <h2>Premium Test Drives</h2>
+            <p>Experience our vehicles with personalized test drives designed around your schedule</p>
+        </div>
+        
+        <div class="drive-cards">
+            <div class="drive-card">
+                <div class="drive-image">
+                    <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="At Home Test Drive">
+                </div>
+                <div class="drive-content">
+                    <h3>At Home Experience</h3>
+                    <p>We bring the vehicle to your doorstep for a private, personalized test drive at your convenience.</p>
+                    <button class="nav-btn primary-btn">Schedule Home Drive</button>
+                </div>
+            </div>
+            
+            <div class="drive-card">
+                <div class="drive-image">
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Showroom Test Drive">
+                </div>
+                <div class="drive-content">
+                    <h3>Showroom Experience</h3>
+                    <p>Visit our flagship showrooms for an immersive experience with expert guidance and hospitality.</p>
+                    <button class="nav-btn primary-btn">Visit a Showroom</button>
+                </div>
+            </div>
+            
+            <div class="drive-card">
+                <div class="drive-image">
+                    <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Extended Test Drive">
+                </div>
+                <div class="drive-content">
+                    <h3>Extended Experience</h3>
+                    <p>Take the vehicle for a 24-hour extended test drive to truly experience life with TechAuto.</p>
+                    <button class="nav-btn primary-btn">Book Extended Drive</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events-section">
+        <div class="events-container">
+            <div class="section-header">
+                <h2>Exclusive Events</h2>
+                <p>Join us for unique experiences designed for enthusiasts and owners</p>
+            </div>
+            
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Launch Event">
+                        <div class="event-date">June 15, 2023</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>E1 Electric Premiere</h3>
+                        <p>Be among the first to experience our revolutionary electric vehicle at exclusive launch events worldwide.</p>
+                        <button class="nav-btn secondary-btn">RSVP Now</button>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="https://images.unsplash.com/photo-1501577316686-a5cbf6c1df7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Driving Experience">
+                        <div class="event-date">July 22, 2023</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Performance Academy</h3>
+                        <p>Master your driving skills with professional instructors at renowned race tracks around the country.</p>
+                        <button class="nav-btn secondary-btn">Learn More</button>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="https://images.unsplash.com/photo-1553444836-bc6c8d340ba7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Owners Event">
+                        <div class="event-date">August 10, 2023</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Owners Retreat</h3>
+                        <p>Exclusive getaway for TechAuto owners featuring scenic drives, fine dining, and luxury accommodations.</p>
+                        <button class="nav-btn secondary-btn">Join Retreat</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Section -->
+    <section class="app-section">
+        <div class="app-content">
+            <h2>TechAuto Connect App</h2>
+            <p>Your vehicle, your lifestyle, all in one place. The TechAuto Connect app seamlessly integrates with your vehicle to provide control, insights, and exclusive benefits.</p>
+            
+            <div class="app-features">
+                <div class="app-feature">
+                    <i class="fas fa-mobile-alt"></i>
+                    <div>
+                        <h3>Remote Control</h3>
+                        <p>Start, lock, and precondition your vehicle from anywhere.</p>
+                    </div>
+                </div>
+                
+                <div class="app-feature">
+                    <i class="fas fa-route"></i>
+                    <div>
+                        <h3>Trip Planning</h3>
+                        <p>Intelligent route planning with charging station integration.</p>
+                    </div>
+                </div>
+                
+                <div class="app-feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <div>
+                        <h3>Vehicle Health</h3>
+                        <p>Real-time diagnostics and maintenance scheduling.</p>
+                    </div>
+                </div>
+                
+                <div class="app-feature">
+                    <i class="fas fa-key"></i>
+                    <div>
+                        <h3>Digital Key</h3>
+                        <p>Share digital keys with family and friends securely.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="app-badges">
+                <img src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="App Store" class="app-badge">
+                <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Google Play" class="app-badge" style="height: 60px;">
+            </div>
+        </div>
+        
+        <div class="app-image">
+            <div class="phone-mockup">
+                <div class="phone-screen">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="TechAuto App">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+        <div class="testimonials-container">
+            <div class="section-header">
+                <h2>Owner Experiences</h2>
+                <p>Discover what our community has to say about the TechAuto journey</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Sarah Johnson">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>TechAuto E1 Owner</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "The purchase experience was unlike any car buying I've done. The virtual showroom let me customize every detail, and the home delivery made the whole process effortless."
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Michael Chen">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Michael Chen</h4>
+                            <p>Performance Series Owner</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "The Performance Academy completely transformed how I drive. Learning from professional drivers on a real track helped me appreciate the engineering in my TechAuto."
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Robert Davis">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Robert Davis</h4>
+                            <p>TechAuto Club Member</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "The owners retreat in the mountains was unforgettable. Connecting with fellow enthusiasts while enjoying breathtaking drives created memories that last a lifetime."
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="newsletter-container">
+            <h2>Stay Connected</h2>
+            <p>Subscribe to our newsletter for exclusive event invitations, product updates, and special offers.</p>
+            
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Enter your email address">
+                <button type="submit" class="nav-btn primary-btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Experience</h4>
+                <ul>
+                    <li><a href="#">Test Drive</a></li>
+                    <li><a href="#">Virtual Showroom</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Owners Community</a></li>
+                    <li><a href="#">TechAuto App</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Vehicles</h4>
+                <ul>
+                    <li><a href="#">All Models</a></li>
+                    <li><a href="#">Electric Vehicles</a></li>
+                    <li><a href="#">Hybrid Models</a></li>
+                    <li><a href="#">Performance Series</a></li>
+                    <li><a href="#">Compare Vehicles</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Technology</h4>
+                <ul>
+                    <li><a href="#">Autonomous Driving</a></li>
+                    <li><a href="#">Electric Powertrain</a></li>
+                    <li><a href="#">Connectivity</a></li>
+                    <li><a href="#">Safety Systems</a></li>
+                    <li><a href="#">Innovation</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Investors</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright">© 2023 TechAuto. All rights reserved.</div>
+            <div class="social-links">
+                <a href="https://facebook.com/techauto"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/techauto"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/techauto"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/techauto"><i class="fab fa-youtube"></i></a>
+                <a href="https://linkedin.com/company/techauto"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for elements when they come into view
+        const animatedElements = document.querySelectorAll('.journey-step, .drive-card, .event-card, .testimonial-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 1s ease forwards';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        animatedElements.forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+
+        // Newsletter form submission
+        const newsletterForm = document.querySelector('.newsletter-form');
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = e.target.querySelector('input').value;
+            alert(`Thank you for subscribing with ${email}! You'll receive our latest updates soon.`);
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
