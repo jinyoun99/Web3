@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicles | TechAuto</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        :root {
+            --primary: #1d1d1f;
+            --secondary: #f5f5f7;
+            --accent: #0071e3;
+            --accent-hover: #0077ed;
+            --text-light: #86868b;
+            --text-dark: #1d1d1f;
+            --card-bg: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --section-padding: 120px 40px;
+            --border-radius: 20px;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --box-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            background-color: #fff;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: opacity 0.5s ease, visibility 0.5s;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .preloader-logo {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .preloader-logo svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .preloader-bar {
+            width: 300px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .preloader-progress {
+            height: 100%;
+            width: 0%;
+            background: var(--accent);
+            transition: width 0.5s ease;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            padding: 15px 40px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            position: relative;
+            transform: rotate(45deg);
+        }
+
+        .logo-icon:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 16px;
+            background: white;
+            border-radius: 4px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 14px;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        nav a:hover:after {
+            width: 100%;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .primary-btn {
+            background: var(--accent);
+            color: white;
+            border: 1px solid var(--accent);
+        }
+
+        .primary-btn:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+        }
+
+        .secondary-btn {
+            background: transparent;
+            color: var(--text-dark);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .secondary-btn:hover {
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        /* Hero Section for Vehicles */
+        .vehicles-hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .vehicles-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1d1d1f 0%, #000000 100%);
+            z-index: -1;
+        }
+
+        .vehicles-hero-content {
+            max-width: 900px;
+        }
+
+        .vehicles-hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            color: white;
+        }
+
+        .vehicles-hero p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Vehicle Filter */
+        .vehicle-filter {
+            background: var(--secondary);
+            padding: 30px 40px;
+            border-radius: var(--border-radius);
+            max-width: 1400px;
+            margin: -50px auto 80px;
+            position: relative;
+            z-index: 10;
+            box-shadow: var(--box-shadow);
+        }
+
+        .filter-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .filter-header h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .filter-options {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-option {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .filter-option h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .filter-select {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            background: white;
+            font-size: 1rem;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+
+        /* Vehicle Grid */
+        .vehicles-section {
+            padding: var(--section-padding);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-header p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .vehicles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .vehicle-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .vehicle-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        .vehicle-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            z-index: 2;
+        }
+
+        .vehicle-image {
+            height: 250px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .vehicle-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .vehicle-card:hover .vehicle-image img {
+            transform: scale(1.05);
+        }
+
+        .vehicle-content {
+            padding: 30px;
+        }
+
+        .vehicle-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .vehicle-header h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .vehicle-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .vehicle-specs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .spec-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            background: rgba(0, 113, 227, 0.05);
+            border-radius: 12px;
+        }
+
+        .spec-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .spec-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .spec-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .vehicle-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .action-btn {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .primary-action {
+            background: var(--accent);
+            color: white;
+        }
+
+        .primary-action:hover {
+            background: var(--accent-hover);
+        }
+
+        .secondary-action {
+            background: transparent;
+            color: var(--text-dark);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .secondary-action:hover {
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        /* Vehicle Categories */
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 60px 0;
+        }
+
+        .category-card {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            height: 200px;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .category-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .category-overlay h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .category-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 80px 40px 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto 60px;
+        }
+
+        .footer-column h4 {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .footer-column h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .vehicles-hero h1 {
+                font-size: 3rem;
+            }
+            
+            .vehicles-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .nav-buttons {
+                display: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .vehicles-hero {
+                height: 60vh;
+            }
+            
+            .vehicles-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .vehicles-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .vehicle-filter {
+                padding: 20px;
+                margin-top: -30px;
+                margin-bottom: 40px;
+            }
+            
+            .filter-options {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .vehicles-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .categories {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-logo">
+            <svg viewBox="0 0 100 100">
+                <rect x="25" y="25" width="50" height="50" fill="#0071e3" rx="10" ry="10"/>
+                <rect x="35" y="35" width="30" height="30" fill="#ffffff" rx="5" ry="5"/>
+            </svg>
+        </div>
+        <div class="preloader-bar">
+            <div class="preloader-progress" id="preloader-progress"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <a href="index.html" class="logo">
+            <div class="logo-icon"></div>
+            <span>Tech</span>Auto
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="vehicles.html" class="active">Vehicles</a></li>
+                <li><a href="technology.html">Technology</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <div class="nav-buttons">
+            <button class="nav-btn secondary-btn">Sign In</button>
+            <button class="nav-btn primary-btn">Explore</button>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="vehicles-hero">
+        <div class="vehicles-hero-bg"></div>
+        <div class="vehicles-hero-content">
+            <h1>Explore Our Premium Collection</h1>
+            <p>Discover the perfect blend of performance, innovation, and luxury</p>
+            <button class="nav-btn primary-btn" style="padding: 14px 30px; font-size: 1.1rem;">View All Models</button>
+        </div>
+    </section>
+
+    <!-- Vehicle Filter -->
+    <section class="vehicle-filter">
+        <div class="filter-header">
+            <h2>Find Your Perfect Vehicle</h2>
+            <button class="nav-btn secondary-btn">Reset Filters</button>
+        </div>
+        <div class="filter-options">
+            <div class="filter-option">
+                <h3>Vehicle Type</h3>
+                <select class="filter-select">
+                    <option value="all">All Types</option>
+                    <option value="suv">SUV</option>
+                    <option value="sedan">Sedan</option>
+                    <option value="coupe">Coupe</option>
+                    <option value="electric">Electric</option>
+                </select>
+            </div>
+            <div class="filter-option">
+                <h3>Brand</h3>
+                <select class="filter-select">
+                    <option value="all">All Brands</option>
+                    <option value="mazda">Mazda</option>
+                    <option value="mercedes">Mercedes-Benz</option>
+                    <option value="techauto">TechAuto</option>
+                </select>
+            </div>
+            <div class="filter-option">
+                <h3>Price Range</h3>
+                <select class="filter-select">
+                    <option value="all">All Prices</option>
+                    <option value="under30">Under $30,000</option>
+                    <option value="30-50">$30,000 - $50,000</option>
+                    <option value="50-80">$50,000 - $80,000</option>
+                    <option value="over80">Over $80,000</option>
+                </select>
+            </div>
+            <div class="filter-option">
+                <h3>Fuel Type</h3>
+                <select class="filter-select">
+                    <option value="all">All Fuel Types</option>
+                    <option value="gasoline">Gasoline</option>
+                    <option value="hybrid">Hybrid</option>
+                    <option value="electric">Electric</option>
+                    <option value="diesel">Diesel</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Vehicles -->
+    <section class="vehicles-section">
+        <div class="section-header">
+            <h2>Premium Selection</h2>
+            <p>Experience automotive excellence with our curated collection of innovative vehicles</p>
+        </div>
+        
+        <div class="vehicles-grid">
+            <!-- Mazda CX-5 -->
+            <div class="vehicle-card">
+                <div class="vehicle-badge">Best Seller</div>
+                <div class="vehicle-image">
+                    <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mazda CX-5">
+                </div>
+                <div class="vehicle-content">
+                    <div class="vehicle-header">
+                        <h3>Mazda CX-5</h3>
+                        <div class="vehicle-price">$32,000</div>
+                    </div>
+                    <p>Elegant design meets intuitive technology for an exceptional driving experience.</p>
+                    
+                    <div class="vehicle-specs">
+                        <div class="spec-item">
+                            <div class="spec-icon"><i class="fas fa-horse-head"></i></div>
+                            <div class="spec-value">187 HP</div>
+                            <div class="spec-label">Power</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon"><i class="fas fa-gas-pump"></i></div>
+                            <div class="spec-value">35 MPG</div>
+                            <div class="spec-label">Efficiency</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon"><i class="fas fa-car"></i></div>
+                            <div class="spec-value">AWD</div>
+                            <div class="spec-label">Drive</div>
+                        </div>
+                    </div>
+                    
+                    <div class="vehicle-actions">
+                        <a href="mazda-cx5.html" class="action-btn primary-action">Explore</a>
+                        <a href="test-drive.html" class="action-btn secondary-action">Test Drive</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mercedes E-Class -->
+            <div class="vehicle-card">
+                <div class="vehicle-badge">Premium</div>
+                <div class="vehicle-image">
+                    <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mercedes-Benz E-Class">
+                </div>
+                <div class="vehicle-content">
+                    <div class="vehicle-header">
+                        <h3>Mercedes E-Class</h3>
+                        <div class="vehicle-price">$65,000</div>
+                    </div>
+                    <p>The pinnacle of luxury and innovation with intelligent driving assistance.</p>
+                    
+                    <div class="vehicle-specs">
+                        <div class="spec-item">
+                            <div class="spec-icon"><i class="fas fa-horse-head"></i></div>
+                            <div class="spec-value">362 HP</div>
+                            <div class="spec-label">Power</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon"><i class="fas fa-gas-pump"></i></div>
+                            <div class="spec-value">29 MPG</div>
+                            <div class="spec-label">Efficiency</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon"><i class="fas fa-car"></i></div>
+                            <div class="spec-value">4MATIC</div>
+                            <div class="spec-label">Drive</div>
+                        </div>
+                    </div>
+                    
+                    <div class="vehicle-actions">
+                        <a href="mercedes-eclass.html" class="action-btn primary-action">Explore</a>
+                        <a href="test-drive.html" class="action-btn secondary-action">Test Drive</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TechAuto E1 -->
+            <div class="vehicle-card">
+                <div class="vehicle-badge">Electric</div>
+                <div class="vehicle-image">
+                    <img src="https://images.unsplash.com/photo-1550355291-bbee04a92027?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="TechAuto E1">
+                </div>
+                <div class="vehicle-content">
+                    <div class="vehicle-header">
+                        <h3>TechAuto E1</h3>
+                        <div class="vehicle-price">$49,999</div>
+                    </div>
+                    <p>Next-generation electric vehicle with extended range and rapid charging.</p>
+                    
+                    <div class="vehicle-specs">
+                        <div class="spec-item">
+                            <div class="spec-icon"><i class="fas fa-bolt"></i></div>
+                            <div class="spec-value">402 HP</div>
+                            <div class="spec-label">Power</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon"><i class="fas fa-road"></i></div>
+                            <div class="spec-value">350 mi</div>
+                            <div class="spec-label">Range</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon"><i class="fas fa-car"></i></div>
+                            <div class="spec-value">AWD</div>
+                            <div class="spec-label">Drive</div>
+                        </div>
+                    </div>
+                    
+                    <div class="vehicle-actions">
+                        <a href="techauto-e1.html" class="action-btn primary-action">Explore</a>
+                        <a href="test-drive.html" class="action-btn secondary-action">Test Drive</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mazda MX-5 -->
+            <div class="vehicle-card">
+                <div class="vehicle-badge">Sport</div>
+                <div class="vehicle-image">
+                    <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mazda MX-5">
+                </div>
+                <div class="vehicle-content">
+                    <div class="vehicle-header">
+                        <h3>Mazda MX-5</h3>
+                        <div class="vehicle-price">$34,000</div>
+                    </div>
+                    <p>Legendary roadster with perfect balance and exhilarating performance.</p>
+                    
+                    <div class="vehicle-specs">
+                        <div class="spec-item">
+                            <div class="spec-icon"><i class="fas fa-horse-head"></i></div>
+                            <div class="spec-value">181 HP</div>
+                            <div class="spec-label">Power</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            <div class="spec-value">6.5s</div>
+                            <div class="spec-label">0-60 mph</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon"><i class="fas fa-car"></i></div>
+                            <div class="spec-value">RWD</div>
+                            <div class="spec-label">Drive</div>
+                        </div>
+                    </div>
+                    
+                    <div class="vehicle-actions">
+                        <a href="mazda-mx5.html" class="action-btn primary-action">Explore</a>
+                        <a href="test-drive.html" class="action-btn secondary-action">Test Drive</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mercedes GLE -->
+            <div class="vehicle-card">
+                <div class="vehicle-badge">Luxury SUV</div>
+                <div class="vehicle-image">
+                    <img src="https://images.unsplash.com/photo-1553444836-bc6c8d340ba7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mercedes GLE">
+                </div>
+                <div class="vehicle-content">
+                    <div class="vehicle-header">
+                        <h3>Mercedes GLE</h3>
+                        <div class="vehicle-price">$72,000</div>
+                    </div>
+                    <p>Spacious luxury SUV with cutting-edge technology and comfort.</p>
+                    
+                    <div class="vehicle-specs">
+                        <div class="spec-item">
+                            <div class="spec-icon"><i class="fas fa-horse-head"></i></div>
+                            <div class="spec-value">429 HP</div>
+                            <div class="spec-label">Power</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon"><i class="fas fa-gas-pump"></i></div>
+                            <div class="spec-value">24 MPG</div>
+                            <div class="spec-label">Efficiency</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon"><i class="fas fa-car"></i></div>
+                            <div class="spec-value">4MATIC+</div>
+                            <div class="spec-label">Drive</div>
+                        </div>
+                    </div>
+                    
+                    <div class="vehicle-actions">
+                        <a href="mercedes-gle.html" class="action-btn primary-action">Explore</a>
+                        <a href="test-drive.html" class="action-btn secondary-action">Test Drive</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TechAuto H2 -->
+            <div class="vehicle-card">
+                <div class="vehicle-badge">Hybrid</div>
+                <div class="vehicle-image">
+                    <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="TechAuto H2">
+                </div>
+                <div class="vehicle-content">
+                    <div class="vehicle-header">
+                        <h3>TechAuto H2</h3>
+                        <div class="vehicle-price">$45,500</div>
+                    </div>
+                    <p>Efficient hybrid technology without compromising on performance.</p>
+                    
+                    <div class="vehicle-specs">
+                        <div class="spec-item">
+                            <div class="spec-icon"><i class="fas fa-horse-head"></i></div>
+                            <div class="spec-value">245 HP</div>
+                            <div class="spec-label">Power</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon"><i class="fas fa-gas-pump"></i></div>
+                            <div class="spec-value">48 MPG</div>
+                            <div class="spec-label">Efficiency</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon"><i class="fas fa-car"></i></div>
+                            <div class="spec-value">e-AWD</div>
+                            <div class="spec-label">Drive</div>
+                        </div>
+                    </div>
+                    
+                    <div class="vehicle-actions">
+                        <a href="techauto-h2.html" class="action-btn primary-action">Explore</a>
+                        <a href="test-drive.html" class="action-btn secondary-action">Test Drive</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vehicle Categories -->
+    <section class="vehicles-section">
+        <div class="section-header">
+            <h2>Browse By Category</h2>
+            <p>Find your ideal vehicle type from our diverse collection</p>
+        </div>
+        
+        <div class="categories">
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1549399542-7e7f8d12c38b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="SUVs" class="category-image">
+                <div class="category-overlay">
+                    <h3>SUVs</h3>
+                    <p>Spacious and versatile for any adventure</p>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1552519507-88aa2dfa9fdb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sedans" class="category-image">
+                <div class="category-overlay">
+                    <h3>Sedans</h3>
+                    <p>Elegant and efficient for daily driving</p>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Luxury" class="category-image">
+                <div class="category-overlay">
+                    <h3>Luxury</h3>
+                    <p>Premium craftsmanship and advanced features</p>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Electric" class="category-image">
+                <div class="category-overlay">
+                    <h3>Electric</h3>
+                    <p>Zero emissions with exceptional performance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Products</h4>
+                <ul>
+                    <li><a href="vehicles.html">All Vehicles</a></li>
+                    <li><a href="vehicles.html#electric">Electric Models</a></li>
+                    <li><a href="vehicles.html#hybrid">Hybrid Technology</a></li>
+                    <li><a href="vehicles.html#performance">Performance Series</a></li>
+                    <li><a href="vehicles.html">Compare Models</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Technology</h4>
+                <ul>
+                    <li><a href="technology.html">Intelligent Drive</a></li>
+                    <li><a href="technology.html">Safety Systems</a></li>
+                    <li><a href="technology.html">Connectivity</a></li>
+                    <li><a href="technology.html">Battery Technology</a></li>
+                    <li><a href="technology.html">Research & Development</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Experience</h4>
+                <ul>
+                    <li><a href="experience.html">Test Drive</a></li>
+                    <li><a href="experience.html">Virtual Showroom</a></li>
+                    <li><a href="experience.html">Events</a></li>
+                    <li><a href="experience.html">Owners Community</a></li>
+                    <li><a href="experience.html">App</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="about.html">Careers</a></li>
+                    <li><a href="about.html">Sustainability</a></li>
+                    <li><a href="about.html">Investors</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright">© 2023 TechAuto. All rights reserved.</div>
+            <div class="social-links">
+                <a href="https://facebook.com/techauto"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/techauto"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/techauto"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/techauto"><i class="fab fa-youtube"></i></a>
+                <a href="https://linkedin.com/company/techauto"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Preloader simulation
+        const preloader = document.getElementById('preloader');
+        const progressBar = document.getElementById('preloader-progress');
+        
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress += 5;
+            progressBar.style.width = `${progress}%`;
+            
+            if (progress >= 100) {
+                clearInterval(interval);
+                setTimeout(() => {
+                    preloader.classList.add('hidden');
+                }, 500);
+            }
+        }, 100);
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Filter functionality
+        const filterSelects = document.querySelectorAll('.filter-select');
+        filterSelects.forEach(select => {
+            select.addEventListener('change', () => {
+                // In a real app, this would filter the vehicle grid
+                console.log(`Filter changed: ${select.value}`);
+            });
+        });
+
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            // Menu functionality would go here
+        });
+
+        // Card hover animations
+        const vehicleCards = document.querySelectorAll('.vehicle-card');
+        vehicleCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
